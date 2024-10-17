@@ -44,7 +44,7 @@ public class Principal {
 //                System.out.println("\t" + episodiosTemporada.get(j).titulo());
 //            }
 //        }
-
+        //codigo anterior con lambda
         temporadas.forEach(t -> t.episodios().forEach(e -> System.out.println(e.titulo())));
     }
 }
