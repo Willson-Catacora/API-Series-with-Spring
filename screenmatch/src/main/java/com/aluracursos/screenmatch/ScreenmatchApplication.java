@@ -24,11 +24,10 @@ public class ScreenmatchApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 		Principal principal = new Principal();
+		principal.muestraElMenu();
 
-//		principal.muestraElMenu();
-
-        EjemploStream lista = new EjemploStream();
-        lista.muestraStream();
+        //EjemploStream lista = new EjemploStream();
+        //lista.muestraStream();
 
         /*//System.out.println("Hola mundo desde spring...");
         var consumoApi = new ConsumirAPI();
