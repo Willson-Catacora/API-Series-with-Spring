@@ -1,16 +1,11 @@
 package com.aluracursos.screenmatch.principal;
 
-import com.aluracursos.screenmatch.model.DatosEpisodio;
 import com.aluracursos.screenmatch.model.DatosSerie;
 import com.aluracursos.screenmatch.model.DatosTemporadas;
-import com.aluracursos.screenmatch.model.Episodio;
 import com.aluracursos.screenmatch.service.ConsumirAPI;
 import com.aluracursos.screenmatch.service.ConvierteDatos;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Principal {
     private Scanner teclado = new Scanner(System.in);
@@ -19,6 +14,7 @@ public class Principal {
 
     private ConsumirAPI consumoApi = new ConsumirAPI();
     private ConvierteDatos convierteDatos = new ConvierteDatos();
+    private  List<DatosSerie> datosSeries = new ArrayList<>();
 
 
     public void muestraElMenu() {
@@ -27,6 +23,7 @@ public class Principal {
             var menu = """
                     1 - Buscar series
                     2 - Buscar episodios
+                    3 - Mostrar series buscadas
                     
                     0 - Salir
                     """;
@@ -39,6 +36,9 @@ public class Principal {
                     break;
                 case 2:
                     buscarEpisodioPorSerie();
+                    break;
+                case 3:
+                    mostrarSeriesBuscadas();
                     break;
                 case 0:
                     System.out.println("Cerrando la aplicacion");
@@ -54,9 +54,9 @@ public class Principal {
         //Busca los datos de las series
         var nombreSerie = teclado.nextLine();
         var json = consumoApi.obtenerDatos(URL_BASE + nombreSerie.replace(" ", "+") + API_KEY);
-        //System.out.println(json);
-        var datos = convierteDatos.obtenerDatos(json, DatosSerie.class);
-        System.out.println(datos);
+        System.out.println(json);
+        DatosSerie datos = convierteDatos.obtenerDatos(json, DatosSerie.class);
+        //System.out.println(datos);
         return datos;
     }
 
@@ -73,7 +73,13 @@ public class Principal {
     }
 
     private void buscarSerieWeb() {
+        DatosSerie datos = getDatosSerie();
+        datosSeries.add(datos);
+        System.out.println(datos);
+    }
 
+    private void mostrarSeriesBuscadas() {
+        datosSeries.forEach(System.out::println);
     }
 }
 
