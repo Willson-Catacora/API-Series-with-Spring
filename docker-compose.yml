@@ -5,7 +5,7 @@ services:
     image: postgres:latest
     container_name: postgres_db
     environment:
-      POSTGRES_DB: series
+      POSTGRES_DB: alura_series
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
     ports:
