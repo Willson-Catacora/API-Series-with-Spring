@@ -2,6 +2,7 @@ package com.aluracursos.screenmatch.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.OptionalDouble;
 
 @Entity
@@ -19,7 +20,11 @@ public class Serie {
     private Categoria genero;
     private String actores;
     private String poster;
-    private String sinopsi;
+    private String sinopsis;
+    @Transient
+    private List<Episodio> episodio;
+
+    public Serie(){}
 
     public Serie(DatosSerie datosSerie) {
         this.titulo = datosSerie.titulo();
@@ -28,7 +33,7 @@ public class Serie {
         this.genero = Categoria.fromString(datosSerie.genero().split(",")[0].trim());
         this.poster = datosSerie.poster();
         this.actores = datosSerie.actores();
-        this.sinopsi = datosSerie.sinopsis();
+        this.sinopsis = datosSerie.sinopsis();
     }
 
     public Long getId() {
@@ -87,12 +92,12 @@ public class Serie {
         this.poster = poster;
     }
 
-    public String getSinopsi() {
-        return sinopsi;
+    public String getSinopsis() {
+        return sinopsis;
     }
 
-    public void setSinopsi(String sinopsi) {
-        this.sinopsi = sinopsi;
+    public void setSinopsis(String sinopsis) {
+        this.sinopsis = sinopsis;
     }
 
     @Override
@@ -100,7 +105,7 @@ public class Serie {
         return "titulo='" + titulo + '\'' +
                 "\n\tgenero=" + genero +
                 "\n\ttotalDeTemporadas=" + totalDeTemporadas +
-                "\n\tsinopsi='" + sinopsi + '\'' +
+                "\n\tsinopsi='" + sinopsis + '\'' +
                 "\n\tevaluacion=" + evaluacion +
                 "\n\tactores='" + actores + '\'' +
                 "\n\tposter='" + poster + '\'';
