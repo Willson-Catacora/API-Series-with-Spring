@@ -21,7 +21,7 @@ public class Serie {
     private String actores;
     private String poster;
     private String sinopsis;
-    @OneToMany(mappedBy = "serie")
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios;
 
     public Serie(){}
@@ -34,6 +34,15 @@ public class Serie {
         this.poster = datosSerie.poster();
         this.actores = datosSerie.actores();
         this.sinopsis = datosSerie.sinopsis();
+    }
+
+    public List<Episodio> getEpisodios() {
+        return episodios;
+    }
+
+    public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this));
+        this.episodios = episodios;
     }
 
     public Long getId() {
@@ -108,6 +117,7 @@ public class Serie {
                 "\n\tsinopsi='" + sinopsis + '\'' +
                 "\n\tevaluacion=" + evaluacion +
                 "\n\tactores='" + actores + '\'' +
-                "\n\tposter='" + poster + '\'';
+                "\n\tposter='" + poster + '\''+
+                "\n\tEpisodio="+episodios+'\''+"\n";
     }
 }
