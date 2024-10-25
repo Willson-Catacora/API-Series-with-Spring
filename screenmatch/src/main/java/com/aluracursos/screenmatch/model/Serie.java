@@ -24,7 +24,8 @@ public class Serie {
     @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Episodio> episodios;
 
-    public Serie(){}
+    public Serie() {
+    }
 
     public Serie(DatosSerie datosSerie) {
         this.titulo = datosSerie.titulo();
@@ -117,7 +118,7 @@ public class Serie {
                 "\n\tsinopsi='" + sinopsis + '\'' +
                 "\n\tevaluacion=" + evaluacion +
                 "\n\tactores='" + actores + '\'' +
-                "\n\tposter='" + poster + '\''+
-                "\n\tEpisodio="+episodios+'\''+"\n";
+                "\n\tposter='" + poster + '\'' +
+                "\n\tEpisodio=" + episodios + '\'' + "\n";
     }
 }
