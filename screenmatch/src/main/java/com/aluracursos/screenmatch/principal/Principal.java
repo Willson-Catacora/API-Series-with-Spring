@@ -157,7 +157,7 @@ public class Principal {
         System.out.println("Con evaluacion a partir de cual valor");
         var evaluacion = teclado.nextDouble();
         teclado.nextLine();
-        List<Serie> filtroSerie = repositorio.seriePorTemporadasyEvaluacion();
+        List<Serie> filtroSerie = repositorio.seriePorTemporadasyEvaluacion(totalTemporadas, evaluacion);
         System.out.println("*** Series Filtradas ***");
         filtroSerie.forEach(s -> System.out.println(s.getTitulo() + " - evaluacion: "+ s.getEvaluacion()));
         System.out.println();
