@@ -1,3 +1,4 @@
+/*
 package com.aluracursos.screenmatch;
 
 import com.aluracursos.screenmatch.principal.Principal;
@@ -22,3 +23,4 @@ public class ScreenmatchApplicationConsola implements CommandLineRunner {
         principal.muestraElMenu();
     }
 }
+*/
