@@ -6,6 +6,7 @@ import com.aluracursos.screenmatch.model.Episodio;
 import java.util.List;
 
 public record SerieDTO(
+        Long id,
         String titulo,
         Integer totalDeTemporadas,
         Double evaluacion,
